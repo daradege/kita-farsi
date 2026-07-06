@@ -1,0 +1,752 @@
+<!doctype html>
+<html class="not-ready lg:text-base" lang="fa">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Title -->
+  <title>
+    کدهای کوتاه - کیتا فارسی
+  </title>
+
+  <!-- Meta -->
+  <meta name="theme-color" />
+
+  
+  <!-- Author -->
+  
+  <!---->
+  
+  <!---->
+  
+  <!---->
+  
+  <!---->
+  
+  <!---->
+  <meta name="description" content="کدهای کوتاه پوسته Kita." />
+  <meta name="author" content="daradege" />
+  <!-- The Open Graph protocol -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="کدهای کوتاه" />
+  <meta property="og:site_name" content="کیتا فارسی" />
+  <meta property="og:description" content="کدهای کوتاه پوسته Kita." />
+  <meta property="og:url" content="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;shortcodes&#x2F;" />
+  
+  <!---->
+  
+  <!---->
+  
+  <!---->
+  
+  <meta property="og:image" content="https://kita-farsi.vercel.app/icons/github.svg" />
+  
+  <!---->
+  
+
+  <!-- Main CSS-->
+  <link rel="stylesheet" href="https://kita-farsi.vercel.app/main.css" />
+  <style>
+    :root {
+      --bg: #f4f4f5;
+      --bg-dark: #18181b;
+      --header: #e4e4e7;
+      --header-dark: #27272a;
+    }
+  </style>
+
+  <!-- Markdown Highlighting -->
+  
+  <!---->
+  
+  <link id="giallo" rel="stylesheet" href="/giallo-dark.css" />
+  
+  <!---->
+  
+
+  <!-- Preload -->
+  
+
+  <!-- Dark Icon -->
+  <link rel="preload" as="image" href="https://kita-farsi.vercel.app/icons/theme.svg" />
+
+  <!-- Math -->
+  
+  <!---->
+
+  <!-- Mermaid -->
+  
+  <!---->
+  <script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+  const initMermaid = (isDark) => {
+    mermaid.initialize({
+      theme: isDark ? "dark" : "default",
+      startOnLoad: false,
+    });
+    mermaid.run();
+  };
+
+  // Add data-mermaid-code attribute on all mermaid block.
+  document.querySelectorAll(".mermaid").forEach((element) => {
+    element.setAttribute("data-mermaid-code", element.innerHTML);
+  });
+
+  // Re-render mermaid when theme changed.
+  document.body.addEventListener("set-theme", (e) => {
+    document.querySelectorAll(".mermaid").forEach((element) => {
+      const mermaidCode = element.getAttribute("data-mermaid-code");
+      if (mermaidCode != null) {
+        element.removeAttribute("data-processed");
+        element.innerHTML = mermaidCode;
+      }
+    });
+    initMermaid(e.detail === "dark");
+  });
+
+  // The es module script will load defer, so the localStorage should already be set by script in header.
+  // If this script is loaded first, the script in header will dispatch an event to re-render mermaid, it's works too.
+  initMermaid(localStorage.getItem("dark") === "true");
+</script>
+
+  <!---->
+  
+  <!---->
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://kita-farsi.vercel.app/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://kita-farsi.vercel.app/apple-touch-icon.png" />
+
+  <!-- Feeds -->
+  
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;shortcodes&#x2F;" />
+
+  <!-- Head inject -->
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white" dir="rtl">
+    <header
+  class="header fixed top-0 z-40 mx-auto min-h-14 w-full"
+>
+  <div class="mx-auto w-full max-w-4xl p-3 lg:flex lg:justify-between">
+    <div class="flex justify-between">
+      <div class="flex items-center">
+        <a class="text-2xl font-semibold" href="https://kita-farsi.vercel.app">کیتا فارسی</a>
+        <div
+          class="btn-dark mr-4 h-6 w-6 shrink-0 cursor-pointer text-[0px] [background:url(./icons/theme.svg)_left_center/cover_no-repeat] dark:bg-right dark:invert"
+          role="button"
+          aria-label="Dark"
+        ></div>
+      </div>
+      
+      <div
+        class="btn-menu relative z-50 flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+        role="button"
+        aria-label="Menu"
+      ></div>
+      
+    </div>
+    <script>
+      // base
+      const htmlClass = document.documentElement.classList;
+      setTimeout(() => {
+        htmlClass.remove("not-ready");
+      }, 10);
+
+      // mobile menu
+      const btnMenu = document.querySelector(".btn-menu");
+      btnMenu?.addEventListener("click", () => {
+        htmlClass.toggle("open");
+      });
+
+      // dark theme
+      const setDark = (isDark) => {
+        if (isDark) {
+          htmlClass.add("dark");
+        } else {
+          htmlClass.remove("dark");
+        }
+        const mode = isDark ? "dark" : "light";
+        document.body.dispatchEvent(new CustomEvent("set-theme", { detail: mode }));
+        document.querySelector("#giallo")?.setAttribute("href", `/giallo-${mode}.css`);
+        localStorage.setItem("dark", isDark);
+      };
+
+      // init
+      const darkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+      if (htmlClass.contains("dark")) {
+        setDark(true);
+      } else {
+        const darkVal = localStorage.getItem("dark");
+        setDark(darkVal ? darkVal === "true" : darkScheme.matches);
+      }
+
+      // listen system
+      darkScheme.addEventListener("change", (event) => {
+        setDark(event.matches);
+      });
+
+      // manual switch
+      const btnDark = document.querySelector(".btn-dark");
+      btnDark.addEventListener("click", () => {
+        setDark(localStorage.getItem("dark") !== "true");
+      });
+    </script>
+    
+    <nav class="flex w-full items-center lg:w-auto">
+      <ul
+        class="nav-wrapper flex w-full flex-col py-2 lg:w-auto lg:flex-row lg:self-center lg:py-0"
+      >
+        
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://kita-farsi.vercel.app/projects"
+            >پروژه‌ها</a
+          >
+        </li>
+        
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://kita-farsi.vercel.app/archive"
+            >آرشیو</a
+          >
+        </li>
+        
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://kita-farsi.vercel.app/tags"
+            >تگ‌ها</a
+          >
+        </li>
+        
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://kita-farsi.vercel.app/about"
+            >درباره</a
+          >
+        </li>
+        
+      </ul>
+      <!-- Header Nav inject -->
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <!-- Body Start inject -->
+    
+
+    <div class="flex">
+      <div class="order-3 hidden w-[calc((100%-var(--container-3xl))/2)] lg:block"></div>
+      <aside
+        class="sticky top-0 order-1 mt-48 hidden h-min w-[calc((100%-var(--container-3xl))/2)] lg:block"
+      >
+        
+<nav
+  class="prose prose-neutral dark:prose-invert prose-a:block prose-a:truncate prose-a:font-normal prose-a:secondary-link max-h-lvh overflow-y-auto px-2 pt-18 pb-4" style="margin-right: 20px;"
+>
+  <b class="ml-1.5">جدول محتوا</b>
+  <ul>
+    
+    <li>
+      <a href="#mermaid">Mermaid</a>
+      
+    </li>
+    
+    <li>
+      <a href="#hshdr">هشدار</a>
+      
+    </li>
+    
+    <li>
+      <a href="#glry">گالری</a>
+      
+    </li>
+    
+    <li>
+      <a href="#svg-drwnkhty">SVG درون‌خطی</a>
+      
+    </li>
+    
+  </ul>
+</nav>
+
+
+      </aside>
+      <main
+        class="prose prose-neutral dark:prose-invert prose-pre:rounded-lg prose-img:rounded-lg order-2 mx-auto min-h-[calc(100vh-9rem)] w-full max-w-3xl px-4 pt-24 pb-16 wrap-break-word lg:pt-32"
+      >
+        
+<article>
+  <!-- Page Start inject -->
+  
+
+  <header class="mb-16">
+    <h1 class="my-0! pb-2.5">کدهای کوتاه</h1>
+    <div class="text-sm antialiased opacity-60">
+  
+  <time>۲۰۲۲-۱۰-۲۰</time>
+  <span class="mx-1">&middot;</span>
+  <span>۲ دقیقه</span>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <span class="mx-1">&middot;</span>
+  <span>daradege</span>
+  
+  <!-- Page Info inject -->
+  
+</div>
+
+  </header>
+
+  
+
+  <!-- TOC -->
+  
+<nav class="block-bg prose-a:secondary-link mb-12 flex rounded-lg p-2 text-lg">
+  <details>
+    <summary class="cursor-pointer py-1 pl-4">
+      <span class="ml-2">جدول محتوا</span>
+    </summary>
+    <ul class="mx-2">
+      
+      <li>
+        <a href="#mermaid">Mermaid</a>
+        
+      </li>
+      
+      <li>
+        <a href="#hshdr">هشدار</a>
+        
+      </li>
+      
+      <li>
+        <a href="#glry">گالری</a>
+        
+      </li>
+      
+      <li>
+        <a href="#svg-drwnkhty">SVG درون‌خطی</a>
+        
+      </li>
+      
+    </ul>
+  </details>
+</nav>
+
+<!---->
+
+  <!-- Content -->
+  <section><p>پوسته Kita چندین کد کوتاه ارائه می‌دهد.</p>
+<p>تا به حال درباره کدهای کوتاه نشنیده‌اید؟ برای اطلاعات بیشتر <a rel="external" href="https://www.getzola.org/documentation/content/shortcodes/">مستندات Zola</a> را ببینید.</p>
+<h2 id="mermaid"><a class="zola-anchor" href="#mermaid" aria-label="Anchor link for: mermaid">Mermaid</a></h2>
+<p>برای استفاده از Mermaid در صفحه خود، باید <code>extra.mermaid = true</code> را در frontmatter صفحه تنظیم کنید.</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>+++</span></span>
+<span class="giallo-l"><span>title = &quot;عنوان صفحه شما&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span class="z-string">extra</span><span>]</span></span>
+<span class="giallo-l"><span>mermaid = true</span></span>
+<span class="giallo-l"><span>+++</span></span></code></pre>
+<p>سپس می‌توانید از کد کوتاه <code>mermaid()</code> استفاده کنید:</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% mermaid() %}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>graph TD;</span></span>
+<span class="giallo-l"><span>A--&gt;B;</span></span>
+<span class="giallo-l"><span>A--&gt;C;</span></span>
+<span class="giallo-l"><span>B--&gt;D;</span></span>
+<span class="giallo-l"><span>C--&gt;D;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{% end %}</span></span></code></pre>
+<p>این به صورت زیر نمایش داده می‌شود:</p>
+<pre class="mermaid bg-inherit">
+  graph TD;
+A--&gt;B;
+A--&gt;C;
+B--&gt;D;
+C--&gt;D;
+</pre>
+<p>علاوه بر این، می‌توانید بلوک کد را داخل کد کوتاه <code>mermaid()</code> استفاده کنید و بلوک کد نادیده گرفته می‌شود.</p>
+<p>بلوک کد از شکستن قالب‌بندی mermaid توسط فرمت‌کننده جلوگیری می‌کند.</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% mermaid() %}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>```</span><span>mermaid</span></span>
+<span class="giallo-l"><span>sequenceDiagram</span></span>
+<span class="giallo-l"><span>    participant Alice</span></span>
+<span class="giallo-l"><span>    participant Bob</span></span>
+<span class="giallo-l"><span>    Alice-&gt;&gt;John: Hello John, how are you?</span></span>
+<span class="giallo-l"><span>    loop Healthcheck</span></span>
+<span class="giallo-l"><span>        John-&gt;&gt;John: Fight against hypochondria</span></span>
+<span class="giallo-l"><span>    end</span></span>
+<span class="giallo-l"><span>    Note right of John: Rational thoughts &lt;br/&gt;prevail!</span></span>
+<span class="giallo-l"><span>    John--&gt;&gt;Alice: Great!</span></span>
+<span class="giallo-l"><span>    John-&gt;&gt;Bob: How about you?</span></span>
+<span class="giallo-l"><span>    Bob--&gt;&gt;John: Jolly good!</span></span>
+<span class="giallo-l"><span>```</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{% end %}</span></span></code></pre>
+<p>این به صورت زیر نمایش داده می‌شود:</p>
+<pre class="mermaid bg-inherit">
+  
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice-&gt;&gt;John: Hello John, how are you?
+    loop Healthcheck
+        John-&gt;&gt;John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts &lt;br&#x2F;&gt;prevail!
+    John--&gt;&gt;Alice: Great!
+    John-&gt;&gt;Bob: How about you?
+    Bob--&gt;&gt;John: Jolly good!
+
+</pre>
+<h2 id="hshdr"><a class="zola-anchor" href="#hshdr" aria-label="Anchor link for: hshdr">هشدار</a></h2>
+<p>کد کوتاه <code>admonition()</code> یک بنر نمایش می‌دهد تا به شما کمک کند توجه را در صفحه خود قرار دهید.</p>
+<p>این روش دیگری برای نوشتن هشدار به سبک GitHub است، اما از عناوین سفارشی پشتیبانی می‌کند.</p>
+<p>می‌توانید از کد کوتاه <code>admonition()</code> به صورت زیر استفاده کنید:</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% admonition(type=&quot;note&quot;, title=&quot;نکته&quot;) %}</span></span>
+<span class="giallo-l"><span>هشدار </span><span class="z-markup z-inline z-raw">`</span><span class="z-markup z-inline z-raw">note</span><span class="z-markup z-inline z-raw">`</span><span>.</span></span>
+<span class="giallo-l"><span>{% end %}</span></span></code></pre> <!---->
+
+
+<blockquote
+  class="markdown-alert-note"
+  style="--admonition-title: 'یادداشت'"
+>
+  <p>هشدار <code>note</code>.</p>
+
+</blockquote>
+ <!---->
+
+
+<blockquote
+  class="markdown-alert-tip"
+  style="--admonition-title: 'نکته'"
+>
+  <p>هشدار <code>tip</code>.</p>
+
+</blockquote>
+ <!---->
+
+
+<blockquote
+  class="markdown-alert-important"
+  style="--admonition-title: 'مهم'"
+>
+  <p>هشدار <code>important</code>.</p>
+
+</blockquote>
+ <!---->
+
+
+<blockquote
+  class="markdown-alert-warning"
+  style="--admonition-title: 'هشدار'"
+>
+  <p>هشدار <code>warning</code>.</p>
+
+</blockquote>
+ <!---->
+
+
+<blockquote
+  class="markdown-alert-caution"
+  style="--admonition-title: 'احتیاط'"
+>
+  <p>هشدار <code>caution</code>.</p>
+
+</blockquote>
+<h2 id="glry"><a class="zola-anchor" href="#glry" aria-label="Anchor link for: glry">گالری</a></h2>
+<p>کد کوتاه <code>gallery()</code> یک گالری تصویر قابل کلیک ساده فقط HTML است که تمام تصاویر را از دارایی‌های صفحه نمایش می‌دهد.</p>
+<p>این از <a rel="external" href="https://www.getzola.org/documentation/content/image-processing/">مستندات Zola</a> گرفته شده است</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{{ gallery() }}</span></span></code></pre><div class="not-prose flex flex-wrap gap-2">
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/01-zola.png" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;01-zola.b673627618ae4d9e.png" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/02-zola-manet.png" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;02-zola-manet.6cacdaa0a00675f4.png" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/03-zola-cezanne.png" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;03-zola-cezanne.7278afdd982f9c0d.png" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/04-gutenberg.jpg" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;04-gutenberg.870b88ab978bdf22.jpg" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/05-example.jpg" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;05-example.fa7cb105347c93cf.jpg" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/06-example.jpg" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;06-example.eb57cde378878205.jpg" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/07-example.jpg" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;07-example.6ba4bc34b155528f.jpg" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <a href="https://kita-farsi.vercel.app/shortcodes/08-example.jpg" target="_blank">
+    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;08-example.13c3f7440797b6ed.jpg" />
+  </a>
+  <!---->
+  <!---->
+  <!---->
+  
+</div>
+<h2 id="svg-drwnkhty"><a class="zola-anchor" href="#svg-drwnkhty" aria-label="Anchor link for: svg-drwnkhty">SVG درون‌خطی</a></h2>
+<p>کد کوتاه <code>inline_svg()</code> برای جاسازی تصاویر SVG مستقیماً در یک صفحه وب استفاده می‌شود، به جای شامل کردن آنها از طریق تگ <code>&lt;img&gt;</code>.</p>
+<p>می‌توانید از کدهای کوتاه <code>inline_svg()</code> به صورت زیر استفاده کنید:</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% inline_svg() %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-string">Van de Graaf canon</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% end %}</span></span></code></pre><!---->
+<!---->
+<!---->
+<!---->
+
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+
+<figure class="inline-svg">
+  <svg class="canon" xmlns="http://www.w3.org/2000/svg" overflow="visible" viewBox="0 0 496 373"
+   height="373" width="496">
+   <g fill="none">
+      <path stroke="#000" stroke-width=".75"
+         d="M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515"></path>
+      <path stroke="#ED1C24" stroke-width=".75"
+         d="M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z"></path>
+      <path stroke="#000" stroke-width=".75" d="M.479.375h495v372h-495zM247.979.875v372"></path>
+      <ellipse cx="498.729" cy="177.625" rx=".75" ry="1.25"></ellipse>
+      <ellipse cx="247.229" cy="377.375" rx=".75" ry="1.25"></ellipse>
+   </g>
+</svg><!---->
+  
+  <figcaption>Van de Graaf canon</figcaption>
+  
+</figure>
+<p>اگر نمی‌خواهید زیرنویس زیر تصویر نمایش داده شود، می‌توانید متن <code>alt</code> تصویر Markdown را به رشته خالی، <code>Inline SVG</code>، <code>inline-svg</code> یا <code>inline_svg</code> تنظیم کنید.</p>
+<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% inline_svg() %}</span></span>
+<span class="giallo-l"><span>![</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% end %}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{% inline_svg() %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-string">Inline SVG</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% end %}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{% inline_svg() %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-string">inline-svg</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% end %}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{% inline_svg() %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-string">inline_svg</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% end %}</span></span></code></pre><!---->
+<!---->
+<!---->
+<!---->
+
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+
+<figure class="inline-svg">
+  <svg class="canon" xmlns="http://www.w3.org/2000/svg" overflow="visible" viewBox="0 0 496 373"
+   height="373" width="496">
+   <g fill="none">
+      <path stroke="#000" stroke-width=".75"
+         d="M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515"></path>
+      <path stroke="#ED1C24" stroke-width=".75"
+         d="M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z"></path>
+      <path stroke="#000" stroke-width=".75" d="M.479.375h495v372h-495zM247.979.875v372"></path>
+      <ellipse cx="498.729" cy="177.625" rx=".75" ry="1.25"></ellipse>
+      <ellipse cx="247.229" cy="377.375" rx=".75" ry="1.25"></ellipse>
+   </g>
+</svg><!---->
+  
+</figure>
+</section>
+
+  <hr />
+
+  <!-- Post Taxonomies -->
+  
+<footer class="mt-12 flex flex-col">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  
+  <div class="mb-2 flex flex-wrap">
+    <span class="block-bg mr-1.5 mb-1.5 rounded-lg px-5 py-1.5">Tags </span>
+    
+    <a
+      class="block-bg block-hover mr-1.5 mb-1.5 rounded-lg px-5 py-1.5 no-underline"
+      href="https://kita-farsi.vercel.app/tags/markdown/"
+      >markdown</a
+    >
+    
+    <a
+      class="block-bg block-hover mr-1.5 mb-1.5 rounded-lg px-5 py-1.5 no-underline"
+      href="https://kita-farsi.vercel.app/tags/css/"
+      >css</a
+    >
+    
+    <a
+      class="block-bg block-hover mr-1.5 mb-1.5 rounded-lg px-5 py-1.5 no-underline"
+      href="https://kita-farsi.vercel.app/tags/html/"
+      >html</a
+    >
+    
+  </div>
+  
+</footer>
+
+<!---->
+
+  <!-- Post Nav -->
+  
+<nav class="block-bg mt-12 flex flex-wrap rounded-lg text-lg">
+  
+  <a
+    class="block-hover-mask mr-auto flex min-w-[50%] grow items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline"
+    href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;math-typesetting&#x2F;"
+    ><span class="ml-1.5">←</span><span>قالب‌بندی ریاضی</span></a
+  >
+  
+  
+  <a
+    class="block-hover-mask flex min-w-[50%] grow items-center rounded-l-md p-6 pr-3 font-semibold no-underline"
+    href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;theme-config&#x2F;"
+    ><span>راهنمای پیکربندی پوسته</span><span class="mr-1.5">→</span></a
+  >
+  <!---->
+</nav>
+
+<!---->
+
+  <!-- Comment -->
+  
+
+  <!-- Page End inject -->
+  
+</article>
+
+      </main>
+    </div>
+
+    <footer class="mx-auto flex max-w-3xl flex-wrap items-center px-8 py-4 text-sm opacity-60">
+  <div class="mr-auto basis-full lg:basis-1/2">
+    <!---->
+    <!---->
+    &copy; 2020 - 2026<!---->
+    
+    <a class="link" href="https://kita-farsi.vercel.app">
+      daradege
+    </a>
+     |<!---->
+    <!---->
+    <a class="link" href="https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;deed" rel="noopener" target="_blank">
+      CC BY-SA 4.0
+    </a>
+    <!---->
+    
+  </div>
+  <div class="flex basis-full lg:basis-1/2 lg:justify-end">
+    <a class="link mr-6 lg:ml-6" href="https://www.getzola.org/" rel="noopener" target="_blank">
+      قدرت‌گرفته از zola
+    </a>
+    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">کیتا فارسی ✎</a>
+  </div>
+  <!-- Footer inject -->
+  
+</footer>
+
+
+    <!-- Body End inject -->
+    
+  </body>
+</html>

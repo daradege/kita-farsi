@@ -12,27 +12,26 @@
 
   <!-- Meta -->
   <meta name="theme-color" />
-  <link rel="stylesheet" href="https:&#x2F;&#x2F;nulltux.ir&#x2F;kita-farsi/custom.css">
 
   
   <!-- Author -->
   
   <!---->
-  <meta name="description" content="کیتا فارسی یک قالب زیبا و تمیز برای زولا است." />
-  <meta name="author" content="علی صفامنش" />
+  <meta name="description" content="کیتا یک قالب تمیز و ساده برای زولا است." />
+  <meta name="author" content="daradege" />
   <!-- The Open Graph protocol -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="کیتا فارسی" />
-  <meta property="og:description" content="کیتا فارسی یک قالب زیبا و تمیز برای زولا است." />
-  <meta property="og:url" content="https://nulltux.ir/kita-farsi" />
+  <meta property="og:description" content="کیتا یک قالب تمیز و ساده برای زولا است." />
+  <meta property="og:url" content="https://kita-farsi.vercel.app" />
   
-  <meta property="og:image" content="https://nulltux.ir/kita-farsi/icons/github.svg" />
+  <meta property="og:image" content="https://kita-farsi.vercel.app/icons/github.svg" />
   
   <!---->
   
 
-  <!-- CSS & JS -->
-  <link rel="preload stylesheet" as="style" href="https://nulltux.ir/kita-farsi/main.css" />
+  <!-- Main CSS-->
+  <link rel="stylesheet" href="https://kita-farsi.vercel.app/main.css" />
   <style>
     :root {
       --bg: #f4f4f5;
@@ -41,30 +40,21 @@
       --header-dark: #27272a;
     }
   </style>
-  <style>
-    @font-face {
-      src: url('https://nulltux.ir/kita-farsi/fonts/Arad.ttf') format("truetype");
-      font-family: "Arad";
-    }
 
-    @font-face {
-      src: url('https://nulltux.ir/kita-farsi/fonts/Poppins.ttf') format("truetype");
-      font-family: "Poppins";
-    }
+  <!-- Markdown Highlighting -->
+  
+  <!---->
+  
+  <link id="giallo" rel="stylesheet" href="/giallo-dark.css" />
+  
+  <!---->
+  
 
-    * {
-      font-family: "Arad", "Poppins", sans-serif;
-    }
-
-    code, pre {
-      font-family: monospace;
-    }
-  </style>
-
+  <!-- Preload -->
   
 
   <!-- Dark Icon -->
-  <link rel="preload" as="image" href="https://nulltux.ir/kita-farsi/icons/theme.svg" />
+  <link rel="preload" as="image" href="https://kita-farsi.vercel.app/icons/theme.svg" />
 
   <!-- Math -->
   
@@ -75,40 +65,29 @@
   <!---->
 
   <!-- Favicon -->
-  <link rel="icon" href="https://nulltux.ir/kita-farsi/favicon.ico" />
-  <link rel="apple-touch-icon" href="https://nulltux.ir/kita-farsi/apple-touch-icon.png" />
+  <link rel="icon" href="https://kita-farsi.vercel.app/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://kita-farsi.vercel.app/apple-touch-icon.png" />
 
   <!-- Feeds -->
   
-  <!---->
-  
-  <link
-    rel="alternate"
-    type="application/atom+xml"
-    title="Atom"
-    href="https://nulltux.ir/kita-farsi/atom.xml"
-  />
-   
-  <!---->
-  
 
   <!-- Canonical -->
-  <link rel="canonical" href="https:&#x2F;&#x2F;nulltux.ir&#x2F;kita-farsi" />
+  <link rel="canonical" href="https:&#x2F;&#x2F;kita-farsi.vercel.app" />
 
   <!-- Head inject -->
   
 </head>
 
-  <body class="text-black duration-200 ease-out dark:text-white">
+  <body class="text-black duration-200 ease-out dark:text-white" dir="rtl">
     <header
-  class="header fixed top-0 z-40 mx-auto min-h-[3.5rem] w-full"
+  class="header fixed top-0 z-40 mx-auto min-h-14 w-full"
 >
   <div class="mx-auto w-full max-w-4xl p-3 lg:flex lg:justify-between">
     <div class="flex justify-between">
       <div class="flex items-center">
-        <a class="text-2xl font-semibold" href="https://nulltux.ir/kita-farsi">کیتا فارسی</a>
+        <a class="text-2xl font-semibold" href="https://kita-farsi.vercel.app">کیتا فارسی</a>
         <div
-          class="btn-dark mr-4 h-6 w-6 shrink-0 cursor-pointer text-[0px] [background:url(./icons/theme.svg)_left_center/cover_no-repeat] dark:[background-position:right] dark:invert"
+          class="btn-dark mr-4 h-6 w-6 shrink-0 cursor-pointer text-[0px] [background:url(./icons/theme.svg)_left_center/cover_no-repeat] dark:bg-right dark:invert"
           role="button"
           aria-label="Dark"
         ></div>
@@ -137,12 +116,13 @@
       // dark theme
       const setDark = (isDark) => {
         if (isDark) {
-          document.body.dispatchEvent(new CustomEvent("set-theme", { detail: "dark" }));
           htmlClass.add("dark");
         } else {
-          document.body.dispatchEvent(new CustomEvent("set-theme", { detail: "light" }));
           htmlClass.remove("dark");
         }
+        const mode = isDark ? "dark" : "light";
+        document.body.dispatchEvent(new CustomEvent("set-theme", { detail: mode }));
+        document.querySelector("#giallo")?.setAttribute("href", `/giallo-${mode}.css`);
         localStorage.setItem("dark", isDark);
       };
 
@@ -175,15 +155,15 @@
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/projects"
-            >پروژه ها</a
+            href="https://kita-farsi.vercel.app/projects"
+            >پروژه‌ها</a
           >
         </li>
         
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/archive"
+            href="https://kita-farsi.vercel.app/archive"
             >آرشیو</a
           >
         </li>
@@ -191,15 +171,15 @@
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/tags"
-            >تگ ها</a
+            href="https://kita-farsi.vercel.app/tags"
+            >تگ‌ها</a
           >
         </li>
         
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/about"
+            href="https://kita-farsi.vercel.app/about"
             >درباره</a
           >
         </li>
@@ -217,19 +197,18 @@
     
 
     <div class="flex">
-      <div class="order-1 hidden w-[calc((100%-var(--container-3xl))/2)] lg:block"></div>
+      <div class="order-3 hidden w-[calc((100%-var(--container-3xl))/2)] lg:block"></div>
       <aside
-        class="sticky top-0 order-3 mt-48 hidden h-min w-[calc((100%-var(--container-3xl))/2)] lg:block"
+        class="sticky top-0 order-1 mt-48 hidden h-min w-[calc((100%-var(--container-3xl))/2)] lg:block"
       >
         
 
       </aside>
       <main
-        class="prose prose-neutral dark:prose-invert prose-pre:rounded-lg prose-img:rounded-lg order-2 mx-auto min-h-[calc(100vh-9rem)] w-full max-w-3xl px-4 pt-24 pb-16 break-words lg:pt-32"
+        class="prose prose-neutral dark:prose-invert prose-pre:rounded-lg prose-img:rounded-lg order-2 mx-auto min-h-[calc(100vh-9rem)] w-full max-w-3xl px-4 pt-24 pb-16 wrap-break-word lg:pt-32"
       >
         <!---->
 <h1 class="absolute inset-x-8 top-0 bottom-20 flex items-center justify-center text-9xl">404</h1>
-<p class="absolute inset-x-8 top-0 bottom-20 flex items-center justify-center text-xl">صفحه پیدا نشد</p>
 
       </main>
     </div>
@@ -238,26 +217,24 @@
   <div class="mr-auto basis-full lg:basis-1/2">
     <!---->
     <!---->
-    &copy; 2020 - 2025<!---->
+    &copy; 2020 - 2026<!---->
     
-
+    <a class="link" href="https://kita-farsi.vercel.app">
+      daradege
+    </a>
      |<!---->
     <!---->
     <a class="link" href="https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;deed" rel="noopener" target="_blank">
       CC BY-SA 4.0
-    </a>
-    |
-    <a class="link" href="https://nulltux.ir/kita-farsi">
-      علی صفامنش
     </a>
     <!---->
     
   </div>
   <div class="flex basis-full lg:basis-1/2 lg:justify-end">
     <a class="link mr-6 lg:ml-6" href="https://www.getzola.org/" rel="noopener" target="_blank">
-      قدرت گرفته از زولا
+      قدرت‌گرفته از zola
     </a>
-    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">✎ کیتا فارسی</a>
+    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">کیتا فارسی ✎</a>
   </div>
   <!-- Footer inject -->
   

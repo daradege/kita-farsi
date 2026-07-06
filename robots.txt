@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://nulltux.ir/kita-farsi/sitemap.xml
+Sitemap: https://kita-farsi.vercel.app/sitemap.xml

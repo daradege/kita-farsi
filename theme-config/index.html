@@ -7,12 +7,11 @@
 
   <!-- Title -->
   <title>
-    Theme Config Guide - کیتا فارسی
+    راهنمای پیکربندی پوسته - کیتا فارسی
   </title>
 
   <!-- Meta -->
   <meta name="theme-color" />
-  <link rel="stylesheet" href="https:&#x2F;&#x2F;nulltux.ir&#x2F;kita-farsi/custom.css">
 
   
   <!-- Author -->
@@ -26,14 +25,14 @@
   <!---->
   
   <!---->
-  <meta name="description" content="The config fo Kita theme." />
-  <meta name="author" content="علی صفامنش" />
+  <meta name="description" content="پیکربندی پوسته Kita." />
+  <meta name="author" content="daradege" />
   <!-- The Open Graph protocol -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Theme Config Guide" />
+  <meta property="og:title" content="راهنمای پیکربندی پوسته" />
   <meta property="og:site_name" content="کیتا فارسی" />
-  <meta property="og:description" content="The config fo Kita theme." />
-  <meta property="og:url" content="https:&#x2F;&#x2F;nulltux.ir&#x2F;kita-farsi&#x2F;theme-config&#x2F;" />
+  <meta property="og:description" content="پیکربندی پوسته Kita." />
+  <meta property="og:url" content="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;theme-config&#x2F;" />
   
   <!---->
   
@@ -41,13 +40,13 @@
   
   <!---->
   
-  <meta property="og:image" content="https://nulltux.ir/kita-farsi/icons/github.svg" />
+  <meta property="og:image" content="https://kita-farsi.vercel.app/icons/github.svg" />
   
   <!---->
   
 
-  <!-- CSS & JS -->
-  <link rel="preload stylesheet" as="style" href="https://nulltux.ir/kita-farsi/main.css" />
+  <!-- Main CSS-->
+  <link rel="stylesheet" href="https://kita-farsi.vercel.app/main.css" />
   <style>
     :root {
       --bg: #f4f4f5;
@@ -56,30 +55,21 @@
       --header-dark: #27272a;
     }
   </style>
-  <style>
-    @font-face {
-      src: url('https://nulltux.ir/kita-farsi/fonts/Arad.ttf') format("truetype");
-      font-family: "Arad";
-    }
 
-    @font-face {
-      src: url('https://nulltux.ir/kita-farsi/fonts/Poppins.ttf') format("truetype");
-      font-family: "Poppins";
-    }
+  <!-- Markdown Highlighting -->
+  
+  <!---->
+  
+  <link id="giallo" rel="stylesheet" href="/giallo-dark.css" />
+  
+  <!---->
+  
 
-    * {
-      font-family: "Arad", "Poppins", sans-serif;
-    }
-
-    code, pre {
-      font-family: monospace;
-    }
-  </style>
-
+  <!-- Preload -->
   
 
   <!-- Dark Icon -->
-  <link rel="preload" as="image" href="https://nulltux.ir/kita-farsi/icons/theme.svg" />
+  <link rel="preload" as="image" href="https://kita-farsi.vercel.app/icons/theme.svg" />
 
   <!-- Math -->
   
@@ -90,40 +80,29 @@
   <!---->
 
   <!-- Favicon -->
-  <link rel="icon" href="https://nulltux.ir/kita-farsi/favicon.ico" />
-  <link rel="apple-touch-icon" href="https://nulltux.ir/kita-farsi/apple-touch-icon.png" />
+  <link rel="icon" href="https://kita-farsi.vercel.app/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://kita-farsi.vercel.app/apple-touch-icon.png" />
 
   <!-- Feeds -->
   
-  <!---->
-  
-  <link
-    rel="alternate"
-    type="application/atom+xml"
-    title="Atom"
-    href="https://nulltux.ir/kita-farsi/atom.xml"
-  />
-   
-  <!---->
-  
 
   <!-- Canonical -->
-  <link rel="canonical" href="https:&#x2F;&#x2F;nulltux.ir&#x2F;kita-farsi&#x2F;theme-config&#x2F;" />
+  <link rel="canonical" href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;theme-config&#x2F;" />
 
   <!-- Head inject -->
   
 </head>
 
-  <body class="text-black duration-200 ease-out dark:text-white">
+  <body class="text-black duration-200 ease-out dark:text-white" dir="rtl">
     <header
-  class="header fixed top-0 z-40 mx-auto min-h-[3.5rem] w-full"
+  class="header fixed top-0 z-40 mx-auto min-h-14 w-full"
 >
   <div class="mx-auto w-full max-w-4xl p-3 lg:flex lg:justify-between">
     <div class="flex justify-between">
       <div class="flex items-center">
-        <a class="text-2xl font-semibold" href="https://nulltux.ir/kita-farsi">کیتا فارسی</a>
+        <a class="text-2xl font-semibold" href="https://kita-farsi.vercel.app">کیتا فارسی</a>
         <div
-          class="btn-dark mr-4 h-6 w-6 shrink-0 cursor-pointer text-[0px] [background:url(./icons/theme.svg)_left_center/cover_no-repeat] dark:[background-position:right] dark:invert"
+          class="btn-dark mr-4 h-6 w-6 shrink-0 cursor-pointer text-[0px] [background:url(./icons/theme.svg)_left_center/cover_no-repeat] dark:bg-right dark:invert"
           role="button"
           aria-label="Dark"
         ></div>
@@ -152,12 +131,13 @@
       // dark theme
       const setDark = (isDark) => {
         if (isDark) {
-          document.body.dispatchEvent(new CustomEvent("set-theme", { detail: "dark" }));
           htmlClass.add("dark");
         } else {
-          document.body.dispatchEvent(new CustomEvent("set-theme", { detail: "light" }));
           htmlClass.remove("dark");
         }
+        const mode = isDark ? "dark" : "light";
+        document.body.dispatchEvent(new CustomEvent("set-theme", { detail: mode }));
+        document.querySelector("#giallo")?.setAttribute("href", `/giallo-${mode}.css`);
         localStorage.setItem("dark", isDark);
       };
 
@@ -190,15 +170,15 @@
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/projects"
-            >پروژه ها</a
+            href="https://kita-farsi.vercel.app/projects"
+            >پروژه‌ها</a
           >
         </li>
         
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/archive"
+            href="https://kita-farsi.vercel.app/archive"
             >آرشیو</a
           >
         </li>
@@ -206,15 +186,15 @@
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/tags"
-            >تگ ها</a
+            href="https://kita-farsi.vercel.app/tags"
+            >تگ‌ها</a
           >
         </li>
         
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
-            href="https://nulltux.ir/kita-farsi/about"
+            href="https://kita-farsi.vercel.app/about"
             >درباره</a
           >
         </li>
@@ -232,15 +212,15 @@
     
 
     <div class="flex">
-      <div class="order-1 hidden w-[calc((100%-var(--container-3xl))/2)] lg:block"></div>
+      <div class="order-3 hidden w-[calc((100%-var(--container-3xl))/2)] lg:block"></div>
       <aside
-        class="sticky top-0 order-3 mt-48 hidden h-min w-[calc((100%-var(--container-3xl))/2)] lg:block"
+        class="sticky top-0 order-1 mt-48 hidden h-min w-[calc((100%-var(--container-3xl))/2)] lg:block"
       >
         
 
       </aside>
       <main
-        class="prose prose-neutral dark:prose-invert prose-pre:rounded-lg prose-img:rounded-lg order-2 mx-auto min-h-[calc(100vh-9rem)] w-full max-w-3xl px-4 pt-24 pb-16 break-words lg:pt-32"
+        class="prose prose-neutral dark:prose-invert prose-pre:rounded-lg prose-img:rounded-lg order-2 mx-auto min-h-[calc(100vh-9rem)] w-full max-w-3xl px-4 pt-24 pb-16 wrap-break-word lg:pt-32"
       >
         
 <article>
@@ -248,19 +228,19 @@
   
 
   <header class="mb-16">
-    <h1 class="my-0! pb-2.5">Theme Config Guide</h1>
+    <h1 class="my-0! pb-2.5">راهنمای پیکربندی پوسته</h1>
     <div class="text-sm antialiased opacity-60">
   
-  <time>1404-01-09</time>
+  <time>۲۰۲۲-۱۰-۲۰</time>
   <span class="mx-1">&middot;</span>
-  <span>1 دقیقه</span>
+  <span>۱ دقیقه</span>
   <!---->
   <!---->
   <!---->
   <!---->
   
   <span class="mx-1">&middot;</span>
-  <span>علی صفامنش</span>
+  <span>daradege</span>
   
   <!-- Page Info inject -->
   
@@ -275,93 +255,8 @@
 <!---->
 
   <!-- Content -->
-  <section><p>You can customize Kita theme by editing <code>config.toml</code>.</p>
-<p>Here are all the kita theme options:</p>
-<pre data-lang="toml" style="background-color:#2b303b;color:#c0c5ce;" class="language-toml "><code class="language-toml" data-lang="toml"><span style="color:#65737e;"># The Kita theme style config.
-</span><span>[extra]
-</span><span style="color:#65737e;"># Enable KaTex math formula support globally.
-</span><span style="color:#bf616a;">math </span><span>= </span><span style="color:#d08770;">false
-</span><span style="color:#65737e;"># Enable mermaid support globally.
-</span><span style="color:#bf616a;">mermaid </span><span>= </span><span style="color:#d08770;">false
-</span><span style="color:#65737e;"># Enable comment support globally.
-</span><span style="color:#bf616a;">comment </span><span>= </span><span style="color:#d08770;">false
-</span><span>
-</span><span>[extra.style]
-</span><span style="color:#65737e;"># The custom background color.
-</span><span style="color:#65737e;"># bg_color = &quot;&quot;
-</span><span>
-</span><span style="color:#65737e;"># The custom background color in dark mode.
-</span><span style="color:#65737e;"># bg_dark_color = &quot;&quot;
-</span><span>
-</span><span style="color:#65737e;"># Enable header blur.
-</span><span style="color:#65737e;"># header_blur = true
-</span><span>
-</span><span style="color:#65737e;"># The custom header color, only available when `header_blur` is false.
-</span><span style="color:#65737e;"># header_color = &quot;&quot;
-</span><span>
-</span><span style="color:#65737e;"># The custom header color in dark mode, only available when `header_blur` is false.
-</span><span style="color:#65737e;"># header_dark_color = &quot;&quot;
-</span><span>
-</span><span style="color:#65737e;"># The profile on home page.
-</span><span>[extra.profile]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">Kita - Zola Theme</span><span>&quot;
-</span><span style="color:#bf616a;">bio </span><span>= &quot;</span><span style="color:#a3be8c;">Kita is a clean, elegant and simple blog theme for Zola.</span><span>&quot;
-</span><span style="color:#65737e;"># The URL of avatar.
-</span><span style="color:#bf616a;">avatar_url </span><span>= &quot;</span><span style="color:#a3be8c;">icons/github.svg</span><span>&quot;
-</span><span style="color:#65737e;"># Invert color in dark mode.
-</span><span style="color:#bf616a;">avatar_invert </span><span>= </span><span style="color:#d08770;">true
-</span><span>
-</span><span style="color:#65737e;"># The social icons below the profile on the home page.
-</span><span>[[extra.profile.social]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">github</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">https://github.com/daradege/kita-farsi</span><span>&quot;
-</span><span>
-</span><span>[[extra.profile.social]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">twitter</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">https://github.com/daradege/kita-farsi</span><span>&quot;
-</span><span>
-</span><span>[[extra.profile.social]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">rss</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">$BASE_URL/atom.xml</span><span>&quot;
-</span><span>
-</span><span style="color:#65737e;"># The top menu.
-</span><span>[[extra.menu]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">Projects</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">$BASE_URL/projects</span><span>&quot;
-</span><span>
-</span><span>[[extra.menu]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">Archive</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">$BASE_URL/archive</span><span>&quot;
-</span><span>
-</span><span>[[extra.menu]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">تگ ها</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">$BASE_URL/tags</span><span>&quot;
-</span><span>
-</span><span>[[extra.menu]]
-</span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">About</span><span>&quot;
-</span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">$BASE_URL/about</span><span>&quot;
-</span><span>
-</span><span style="color:#65737e;"># The page footer options.
-</span><span>[extra.footer]
-</span><span style="color:#bf616a;">since </span><span>= </span><span style="color:#d08770;">2025
-</span><span style="color:#bf616a;">license </span><span>= &quot;</span><span style="color:#a3be8c;">CC BY-SA 4.0</span><span>&quot;
-</span><span style="color:#bf616a;">license_url </span><span>= &quot;</span><span style="color:#a3be8c;">https://creativecommons.org/licenses/by-sa/4.0/deed</span><span>&quot;
-</span><span>
-</span><span style="color:#65737e;"># The giscus comment options, only available when comment is enabled.
-</span><span>[extra.giscus]
-</span><span style="color:#bf616a;">repo </span><span>= &quot;&quot;
-</span><span style="color:#bf616a;">repo_id </span><span>= &quot;&quot;
-</span><span style="color:#bf616a;">category </span><span>= &quot;&quot;
-</span><span style="color:#bf616a;">category_id </span><span>= &quot;&quot;
-</span><span style="color:#bf616a;">mapping </span><span>= &quot;</span><span style="color:#a3be8c;">pathname</span><span>&quot;
-</span><span style="color:#bf616a;">strict </span><span>= </span><span style="color:#d08770;">1
-</span><span style="color:#bf616a;">reactions_enabled </span><span>= </span><span style="color:#d08770;">0
-</span><span style="color:#bf616a;">emit_metadata </span><span>= </span><span style="color:#d08770;">0
-</span><span style="color:#bf616a;">input_position </span><span>= &quot;</span><span style="color:#a3be8c;">top</span><span>&quot;
-</span><span style="color:#bf616a;">theme </span><span>= &quot;</span><span style="color:#a3be8c;">light</span><span>&quot;
-</span><span style="color:#bf616a;">lang </span><span>= &quot;</span><span style="color:#a3be8c;">en</span><span>&quot;
-</span><span style="color:#bf616a;">loading </span><span>= &quot;</span><span style="color:#a3be8c;">lazy</span><span>&quot;
-</span></code></pre>
+  <section><p>شما می‌توانید پوسته Kita را با ویرایش <code>zola.toml</code> سفارشی کنید.</p>
+<p>ببینید: <a rel="external" href="https://github.com/st1020/kita/blob/main/zola.toml">https://github.com/st1020/kita/blob/main/zola.toml</a></p>
 </section>
 
   <hr />
@@ -379,13 +274,13 @@
     
     <a
       class="block-bg block-hover mr-1.5 mb-1.5 rounded-lg px-5 py-1.5 no-underline"
-      href="https://nulltux.ir/kita-farsi/tags/theme/"
-      >theme</a
+      href="https://kita-farsi.vercel.app/tags/pwsth/"
+      >پوسته</a
     >
     
     <a
       class="block-bg block-hover mr-1.5 mb-1.5 rounded-lg px-5 py-1.5 no-underline"
-      href="https://nulltux.ir/kita-farsi/tags/markdown/"
+      href="https://kita-farsi.vercel.app/tags/markdown/"
       >markdown</a
     >
     
@@ -398,16 +293,14 @@
   <!-- Post Nav -->
   
 <nav class="block-bg mt-12 flex flex-wrap rounded-lg text-lg">
-  <!---->
   
   <a
-    class="block-hover-mask ml-auto flex min-w-[50%] grow items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline"
-    href="https:&#x2F;&#x2F;nulltux.ir&#x2F;kita-farsi&#x2F;placeholder-5&#x2F;"
-    ><span class="ml-1.5">&nbsp;&nbsp;←</span><span>متن جایگزین 5</span></a
+    class="block-hover-mask mr-auto flex min-w-[50%] grow items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline"
+    href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;shortcodes&#x2F;"
+    ><span class="ml-1.5">←</span><span>کدهای کوتاه</span></a
   >
   
-
-  
+  <!---->
 </nav>
 
 <!---->
@@ -426,26 +319,24 @@
   <div class="mr-auto basis-full lg:basis-1/2">
     <!---->
     <!---->
-    &copy; 2020 - 2025<!---->
+    &copy; 2020 - 2026<!---->
     
-
+    <a class="link" href="https://kita-farsi.vercel.app">
+      daradege
+    </a>
      |<!---->
     <!---->
     <a class="link" href="https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;deed" rel="noopener" target="_blank">
       CC BY-SA 4.0
-    </a>
-    |
-    <a class="link" href="https://nulltux.ir/kita-farsi">
-      علی صفامنش
     </a>
     <!---->
     
   </div>
   <div class="flex basis-full lg:basis-1/2 lg:justify-end">
     <a class="link mr-6 lg:ml-6" href="https://www.getzola.org/" rel="noopener" target="_blank">
-      قدرت گرفته از زولا
+      قدرت‌گرفته از zola
     </a>
-    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">✎ کیتا فارسی</a>
+    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">کیتا فارسی ✎</a>
   </div>
   <!-- Footer inject -->
   
