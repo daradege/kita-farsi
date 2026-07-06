@@ -1,13 +1,13 @@
+{%- macro persianize(text) -%}
+{{- text | as_str | replace(from="0", to="۰") | replace(from="1", to="۱") | replace(from="2", to="۲") | replace(from="3", to="۳") | replace(from="4", to="۴") | replace(from="5", to="۵") | replace(from="6", to="۶") | replace(from="7", to="۷") | replace(from="8", to="۸") | replace(from="9", to="۹") -}}
+{%- endmacro persianize -%}
+
 {%- macro get_social_icon(icon) -%}
 {%- set path = "icons/" ~ icon ~ ".svg" -%}
 {%- set meta = get_image_metadata(path=path, allow_missing=true) -%}
 {%- if meta -%}
 {{- get_url(path=path) -}}
 {%- else -%}
-{%- if icon == "www" -%}
-{{- "https://raw.githubusercontent.com/Daradege/Daradege.github.io/refs/heads/main/assets/www.svg" -}}
-{%- else -%}
 {{- "https://cdn.jsdelivr.net/npm/simple-icons/icons/" ~ icon ~ ".svg" -}}
-{%- endif -%}
 {%- endif -%}
 {%- endmacro get_social_icon -%}

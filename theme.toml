@@ -1,15 +1,15 @@
-name = "Kita"
-description = "Kita is a clean, elegant and simple blog theme for Zola."
+name = "کیتا فارسی"
+description = "کیتا فارسی یک قالب تمیز و ساده برای زولا است."
 license = "MIT"
 homepage = "https://github.com/daradege/kita-farsi"
 min_version = "0.17.0"
-demo = "https://daradege.ir/kitafarsi"
+demo = "https://kita-farsi.vercel.app"
 
 [author]
-name = "daradege"
-homepage = "https://st1020.com"
+name = "Daradege"
+homepage = "https://daradege.top"
 
 [original]
-author = "nanxiaobei"
-homepage = "https://lee.so/"
-repo = "https://github.com/nanxiaobei/hugo-paper"
+author = "st1020"
+homepage = "https://st1020/"
+repo = "https://github.com/st1020/kita"
