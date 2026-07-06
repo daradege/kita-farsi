@@ -1,8 +1,9 @@
+{% import "macros.html" as macros %}
 <div class="text-sm antialiased opacity-60">
   {% if page.date %}
-  <time>{{ page.date | date }}</time>
+  <time>{{ macros::persianize(text=page.date | date) }}</time>
   <span class="mx-1">&middot;</span>
-  <span>{{ page.reading_time }} دقیقه</span>
+  <span>{{ macros::persianize(text=page.reading_time) }} دقیقه</span>
   {% endif %}<!---->
   {% if page.authors | length > 0 %}<!---->
   {% set author = page.authors | join(sep=", ") %}<!---->

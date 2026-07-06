@@ -1,7 +1,54 @@
 [[project]]
-name = "کیتا فارسی"
-desc = "کیتا فارسی یک قالب زیبا، ساده و روان برای زولا است."
-tags = ["بلاگ", "زولا", "فارسی", "قالب", "زولا", "فارسی", "کیتا", "فارسی", "کیتا فارسی"]
+name = "lorem"
+desc = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+tags = ["nisi", "saepe"]
 links = [
-    { name = "گیت‌هاب", url = "https://github.com/daradege/kita-farsi" }
+  { name = "github", url = "https://example.com" },
+  { name = "docs", url = "https://example.com" },
+]
+
+[[project]]
+name = "ipsum"
+desc = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+tags = ["lorem", "ipsum"]
+links = [
+  { name = "homepage", url = "https://example.com" },
+  { name = "source", url = "https://example.com" },
+  { name = "docs", url = "https://example.com" },
+]
+
+[[project]]
+name = "dolor sit"
+desc = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+tags = ["amet", "ipsum", "vero", "optio"]
+links = [{ name = "github", url = "https://example.com" }]
+
+[[project]]
+name = "amet"
+desc = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+tags = ["lorem", "ipsum"]
+links = [
+  { name = "website", url = "https://example.com" },
+  { name = "github", url = "https://example.com" },
+  { name = "docs", url = "https://example.com" },
+  { name = "wiki", url = "https://example.com" },
+]
+
+[[project]]
+name = "lorem-ipsum"
+desc = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+tags = ["dolor", "lorem", "ipsum", "amet"]
+links = [
+  { name = "github", url = "https://example.com" },
+  { name = "docs", url = "https://example.com" },
+]
+
+[[project]]
+name = "praesentium"
+desc = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+tags = ["lorem", "ipsum"]
+links = [
+  { name = "homepage", url = "https://example.com" },
+  { name = "github", url = "https://example.com" },
+  { name = "docs", url = "https://example.com" },
 ]

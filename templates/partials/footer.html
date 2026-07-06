@@ -6,15 +6,13 @@
     {% else %}<!---->
     &copy; {{ current_year }}<!---->
     {% endif %}
-
+    <a class="link" href="{{ get_url(path=``) }}">
+      {{ config.author | default(value=config.title) }}
+    </a>
     {% if config.extra.footer.license %} |<!---->
     {% if config.extra.footer.license_url %}<!---->
     <a class="link" href="{{ config.extra.footer.license_url }}" rel="noopener" target="_blank">
       {{ config.extra.footer.license }}
-    </a>
-    |
-    <a class="link" href="{{ get_url(path=``) }}">
-      {{ config.author | default(value=config.title) }}
     </a>
     {% else %}<!---->
     {{ config.extra.footer.license }}<!---->
@@ -23,9 +21,9 @@
   </div>
   <div class="flex basis-full lg:basis-1/2 lg:justify-end">
     <a class="link mr-6 lg:ml-6" href="https://www.getzola.org/" rel="noopener" target="_blank">
-      قدرت گرفته از زولا
+      قدرت‌گرفته از zola
     </a>
-    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">✎ کیتا فارسی</a>
+    <a class="link" href="https://github.com/daradege/kita-farsi" rel="noopener" target="_blank">کیتا فارسی ✎</a>
   </div>
   <!-- Footer inject -->
   {% include "injects/footer.html" ignore missing %}
