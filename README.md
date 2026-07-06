@@ -1,4 +1,4 @@
-# Kita
+# Kita-farsi
 
 Kita is a clean, elegant and simple blog theme for Zola.
 
