@@ -1,12 +1,11 @@
-{% import "macros.html" as macros %}
 <div class="text-sm antialiased opacity-60">
-  {% if page.date %}
-  <time>{{ macros::persianize(text=page.date | date) }}</time>
+  {% if page?.date %}
+  <time>{{ <jalali_date date={page?.date} format="%d %B %Y" /> }}</time>
   <span class="mx-1">&middot;</span>
-  <span>{{ macros::persianize(text=page.reading_time) }} دقیقه</span>
+  <span>{{ <persianize text={page?.reading_time} /> }} دقیقه</span>
   {% endif %}<!---->
-  {% if page.authors | length > 0 %}<!---->
-  {% set author = page.authors | join(sep=", ") %}<!---->
+  {% if page?.authors | length > 0 %}<!---->
+  {% set author = page?.authors | join(sep=", ") %}<!---->
   {% else %}<!---->
   {% set author = config.author %}<!---->
   {% endif %}<!---->
@@ -15,5 +14,5 @@
   <span>{{ author }}</span>
   {% endif %}
   <!-- Page Info inject -->
-  {% include "injects/page_info.html" ignore missing %}
+  {% include "injects/page_info.html" %}
 </div>

@@ -1,8 +1,76 @@
-{%- macro persianize(text) -%}
-{{- text | as_str | replace(from="0", to="۰") | replace(from="1", to="۱") | replace(from="2", to="۲") | replace(from="3", to="۳") | replace(from="4", to="۴") | replace(from="5", to="۵") | replace(from="6", to="۶") | replace(from="7", to="۷") | replace(from="8", to="۸") | replace(from="9", to="۹") -}}
-{%- endmacro persianize -%}
+{% component persianize(text) %}
+{{- text | str | replace(from="0", to="۰") | replace(from="1", to="۱") | replace(from="2", to="۲") | replace(from="3", to="۳") | replace(from="4", to="۴") | replace(from="5", to="۵") | replace(from="6", to="۶") | replace(from="7", to="۷") | replace(from="8", to="۸") | replace(from="9", to="۹") -}}
+{% endcomponent persianize %}
 
-{%- macro get_social_icon(icon) -%}
+{% component jalali_parts(date) %}
+{%- set gy = date | date(format="%Y") | int -%}
+{%- set gm = date | date(format="%m") | int -%}
+{%- set gd = date | date(format="%d") | int -%}
+{%- if gy < 1700 -%}
+{{- gy -}}-{{- gm -}}-{{- gd -}}
+{%- else -%}
+{%- set g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334] -%}
+{%- set gy = gy - 1600 -%}
+{%- set jy = 979 -%}
+{%- if gm > 2 -%}{%- set gy2 = gy + 1 -%}{%- else -%}{%- set gy2 = gy -%}{%- endif -%}
+{%- set gi = gm - 1 -%}
+{%- set t1 = ((gy2 + 3) / 4) | int -%}
+{%- set t2 = ((gy2 + 99) / 100) | int -%}
+{%- set t3 = ((gy2 + 399) / 400) | int -%}
+{%- set days = 365 * gy + t1 - t2 + t3 - 80 + gd + g_d_m[gi] -%}
+{%- set q = (days / 12053) | int -%}
+{%- set jy = jy + 33 * q -%}
+{%- set days = days % 12053 -%}
+{%- set q = (days / 1461) | int -%}
+{%- set jy = jy + 4 * q -%}
+{%- set days = days % 1461 -%}
+{%- if days > 365 -%}
+{%- set q = ((days - 1) / 365) | int -%}
+{%- set jy = jy + q -%}
+{%- set days = (days - 1) % 365 -%}
+{%- endif -%}
+{%- if days < 186 -%}
+{%- set q = (days / 31) | int -%}
+{%- set jm = 1 + q -%}
+{%- set jd = 1 + (days % 31) -%}
+{%- else -%}
+{%- set q = ((days - 186) / 30) | int -%}
+{%- set jm = 7 + q -%}
+{%- set jd = 1 + ((days - 186) % 30) -%}
+{%- endif -%}
+{{- jy -}}-{{- jm -}}-{{- jd -}}
+{%- endif -%}
+{% endcomponent jalali_parts %}
+
+{% component jalali_date(date, format="%Y-%m-%d") %}
+{%- set parts = <jalali_parts date={date} /> | split(pat="-") -%}
+{%- set y = parts[0] | int -%}
+{%- set m = parts[1] | int -%}
+{%- set d = parts[2] | int -%}
+{%- set mi = m - 1 -%}
+{%- set months = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"] -%}
+{%- if format == "%Y" -%}
+{%- set out = y -%}
+{%- elif format == "%m" -%}
+{%- set out = m -%}
+{%- elif format == "%d" -%}
+{%- set out = d -%}
+{%- elif format == "%m-%d" -%}
+{%- if m < 10 -%}{%- set out = "0" ~ m ~ "-" -%}{%- else -%}{%- set out = m ~ "-" -%}{%- endif -%}
+{%- if d < 10 -%}{%- set out = out ~ "0" ~ d -%}{%- else -%}{%- set out = out ~ d -%}{%- endif -%}
+{%- elif format == "%d %B %Y" -%}
+{%- set out = d ~ " " ~ months[mi] ~ " " ~ y -%}
+{%- elif format == "%d %B" -%}
+{%- set out = d ~ " " ~ months[mi] -%}
+{%- elif format == "%B" -%}
+{%- set out = months[mi] -%}
+{%- else -%}
+{%- set out = y ~ "-" ~ m ~ "-" ~ d -%}
+{%- endif -%}
+{{- <persianize text={out} /> -}}
+{% endcomponent jalali_date %}
+
+{% component get_social_icon(icon) %}
 {%- set path = "icons/" ~ icon ~ ".svg" -%}
 {%- set meta = get_image_metadata(path=path, allow_missing=true) -%}
 {%- if meta -%}
@@ -10,4 +78,56 @@
 {%- else -%}
 {{- "https://cdn.jsdelivr.net/npm/simple-icons/icons/" ~ icon ~ ".svg" -}}
 {%- endif -%}
-{%- endmacro get_social_icon -%}
+{% endcomponent get_social_icon %}
+
+{% component admonition(type, title=none) %}
+{% if type == "note" %}{% set admonition_class = "markdown-alert-note" %}
+{% elif type == "tip" %}{% set admonition_class = "markdown-alert-tip" %}
+{% elif type == "important" %}{% set admonition_class = "markdown-alert-important" %}
+{% elif type == "warning" %}{% set admonition_class = "markdown-alert-warning" %}
+{% elif type == "caution" %}{% set admonition_class = "markdown-alert-caution" %}
+{% else %}{{ throw(message="Unknown admonition type: " ~ type) }}
+{% endif %}
+<blockquote class="{{ admonition_class }}" style="--admonition-title: '{{ title | default(value=type | title) }}'">
+{{ body | markdown | safe }}
+</blockquote>
+{% endcomponent admonition %}
+
+{% component mermaid() %}
+<pre class="mermaid bg-inherit">
+{{ body | trim | trim_start(pat="```mermaid") | trim_start(pat="```") | trim_end(pat="```") }}
+</pre>
+{% endcomponent mermaid %}
+
+{% component gallery(@page) %}
+<div class="not-prose flex flex-wrap gap-2">
+  {% for asset in page.assets -%}
+  {% if (asset is ending_with(pat=".jpg")) or (asset is ending_with(pat=".png")) %}
+  {% set image = resize_image(path=asset, width=240, height=180) %}
+  {% set asset_name = asset | split(pat="/") | last %}
+  <a href="{{ get_url(path=page.path ~ asset_name) }}" target="_blank">
+    <img class="rounded-lg" src="{{ image.url }}" />
+  </a>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endcomponent gallery %}
+
+{% component inline_svg(@page) %}
+{% set img = body | trim | trim_start(pat="![") | trim_end(pat=")") | split(pat="](") %}
+{% set alt = img | first() %}
+{% set_global src = img | last() %}
+{% set ignore_names = ["inline svg", "inline-svg", "inline_svg"] %}
+{% for asset in page.assets -%}
+{% set asset = asset | replace(from="\\", to="/") %}
+{% if asset is ending_with(pat="/" ~ src) %}
+{% set_global src = asset %}
+{% endif %}
+{% endfor %}
+<figure class="inline-svg">
+  {{ load_data(path=src) | safe }}
+  {% if alt and not ignore_names is containing(pat=alt | lower) %}
+  <figcaption>{{ alt }}</figcaption>
+  {% endif %}
+</figure>
+{% endcomponent inline_svg %}

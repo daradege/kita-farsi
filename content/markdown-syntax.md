@@ -1,6 +1,6 @@
 +++
 title = "راهنمای نحوه Markdown"
-date = "2022-10-20"
+date = "1401-07-28"
 description = "نمونه مقاله‌ای که نحوه پایه‌ای Markdown و قالب‌بندی عناصر HTML را نشان می‌دهد."
 [taxonomies]
 tags = ["markdown", "css", "html"]

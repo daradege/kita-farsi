@@ -1,6 +1,6 @@
 +++
 title = "کدهای کوتاه"
-date = "2022-10-20"
+date = "1401-07-28"
 description = "کدهای کوتاه پوسته Kita."
 [taxonomies]
 tags = ["markdown", "css", "html"]
@@ -16,6 +16,7 @@ mermaid = true
 
 برای استفاده از Mermaid در صفحه خود، باید `extra.mermaid = true` را در frontmatter صفحه تنظیم کنید.
 
+{% raw %}
 ```markdown
 +++
 title = "عنوان صفحه شما"
@@ -24,11 +25,13 @@ title = "عنوان صفحه شما"
 mermaid = true
 +++
 ```
+{% endraw %}
 
 سپس می‌توانید از کد کوتاه `mermaid()` استفاده کنید:
 
+{% raw %}
 ```markdown
-{%/* mermaid() */%}
+{% <mermaid> %}
 
 graph TD;
 A-->B;
@@ -36,12 +39,13 @@ A-->C;
 B-->D;
 C-->D;
 
-{%/* end */%}
+{% </mermaid> %}
 ```
+{% endraw %}
 
 این به صورت زیر نمایش داده می‌شود:
 
-{% mermaid() %}
+{% <mermaid> %}
 
 graph TD;
 A-->B;
@@ -49,14 +53,15 @@ A-->C;
 B-->D;
 C-->D;
 
-{% end %}
+{% </mermaid> %}
 
 علاوه بر این، می‌توانید بلوک کد را داخل کد کوتاه `mermaid()` استفاده کنید و بلوک کد نادیده گرفته می‌شود.
 
 بلوک کد از شکستن قالب‌بندی mermaid توسط فرمت‌کننده جلوگیری می‌کند.
 
+{% raw %}
 ````markdown
-{%/* mermaid() */%}
+{% <mermaid> %}
 
 ```mermaid
 sequenceDiagram
@@ -72,12 +77,13 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 ```
 
-{%/* end */%}
+{% </mermaid> %}
 ````
+{% endraw %}
 
 این به صورت زیر نمایش داده می‌شود:
 
-{% mermaid() %}
+{% <mermaid> %}
 
 ```mermaid
 sequenceDiagram
@@ -93,7 +99,7 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 ```
 
-{% end %}
+{% </mermaid> %}
 
 ## هشدار
 
@@ -103,31 +109,33 @@ sequenceDiagram
 
 می‌توانید از کد کوتاه `admonition()` به صورت زیر استفاده کنید:
 
+{% raw %}
 ```markdown
-{%/* admonition(type="note", title="نکته") */%}
+{% <admonition type="note" title="نکته"> %}
 هشدار `note`.
-{%/* end */%}
+{% </admonition> %}
 ```
+{% endraw %}
 
-{% admonition(type="note", title="یادداشت") %}
+{% <admonition type="note" title="یادداشت"> %}
 هشدار `note`.
-{% end %}
+{% </admonition> %}
 
-{% admonition(type="tip", title="نکته") %}
+{% <admonition type="tip" title="نکته"> %}
 هشدار `tip`.
-{% end %}
+{% </admonition> %}
 
-{% admonition(type="important", title="مهم") %}
+{% <admonition type="important" title="مهم"> %}
 هشدار `important`.
-{% end %}
+{% </admonition> %}
 
-{% admonition(type="warning", title="هشدار") %}
+{% <admonition type="warning" title="هشدار"> %}
 هشدار `warning`.
-{% end %}
+{% </admonition> %}
 
-{% admonition(type="caution", title="احتیاط") %}
+{% <admonition type="caution" title="احتیاط"> %}
 هشدار `caution`.
-{% end %}
+{% </admonition> %}
 
 ## گالری
 
@@ -135,11 +143,13 @@ sequenceDiagram
 
 این از [مستندات Zola](https://www.getzola.org/documentation/content/image-processing/) گرفته شده است
 
+{% raw %}
 ```markdown
-{{/* gallery() */}}
+{{ <gallery /> }}
 ```
+{% endraw %}
 
-{{ gallery() }}
+{{ <gallery /> }}
 
 ## SVG درون‌خطی
 
@@ -147,36 +157,40 @@ sequenceDiagram
 
 می‌توانید از کدهای کوتاه `inline_svg()` به صورت زیر استفاده کنید:
 
+{% raw %}
 ```markdown
-{%/* inline_svg() */%}
+{% <inline_svg> %}
 ![Van de Graaf canon](Van_de_Graaf_canon_in_book_design.svg)
-{%/* end */%}
+{% </inline_svg> %}
 ```
+{% endraw %}
 
-{% inline_svg() %}
+{% <inline_svg> %}
 ![Van de Graaf canon](Van_de_Graaf_canon_in_book_design.svg)
-{% end %}
+{% </inline_svg> %}
 
 اگر نمی‌خواهید زیرنویس زیر تصویر نمایش داده شود، می‌توانید متن `alt` تصویر Markdown را به رشته خالی، `Inline SVG`، `inline-svg` یا `inline_svg` تنظیم کنید.
 
+{% raw %}
 ```markdown
-{%/* inline_svg() */%}
+{% <inline_svg> %}
 ![](Van_de_Graaf_canon_in_book_design.svg)
-{%/* end */%}
+{% </inline_svg> %}
 
-{%/* inline_svg() */%}
+{% <inline_svg> %}
 ![Inline SVG](Van_de_Graaf_canon_in_book_design.svg)
-{%/* end */%}
+{% </inline_svg> %}
 
-{%/* inline_svg() */%}
+{% <inline_svg> %}
 ![inline-svg](Van_de_Graaf_canon_in_book_design.svg)
-{%/* end */%}
+{% </inline_svg> %}
 
-{%/* inline_svg() */%}
+{% <inline_svg> %}
 ![inline_svg](Van_de_Graaf_canon_in_book_design.svg)
-{%/* end */%}
+{% </inline_svg> %}
 ```
+{% endraw %}
 
-{% inline_svg() %}
+{% <inline_svg> %}
 ![Inline SVG](Van_de_Graaf_canon_in_book_design.svg)
-{% end %}
+{% </inline_svg> %}

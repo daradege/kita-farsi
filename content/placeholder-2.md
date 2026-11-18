@@ -1,6 +1,6 @@
 +++
 title = "متن جایگزین ۲"
-date = "2023-10-20"
+date = "1402-07-28"
 description = "متن آزمایشی"
 [taxonomies]
 tags = ["markdown", "متن"]

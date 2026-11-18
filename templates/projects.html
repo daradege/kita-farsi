@@ -1,13 +1,13 @@
-{% extends "index.html" %}<!---->
+{% extends "index.html" %}
 {% block main %}<!---->
 
-{% for asset in page.assets %}<!---->
-{% if asset is ending_with("data.toml") %}<!---->
+{% for asset in page?.assets %}<!---->
+{% if asset is ending_with(pat="data.toml") %}<!---->
 {% set_global data = load_data(path=asset, format="toml") %}<!---->
 {% endif %}<!---->
 {% endfor %}<!---->
 
-<h1 class="mb-16">{{ page.title }}</h1>
+<h1 class="mb-16">{{ page?.title }}</h1>
 {% for project in data.project %}
 <div class="not-prose block-bg my-4 flex w-full flex-col rounded-lg px-5 py-1.5">
   <h3 class="my-2 text-xl font-bold text-black dark:text-white">{{ project.name }}</h3>

@@ -1,25 +1,38 @@
-{% extends "index.html" %}<!---->
+{% extends "index.html" %}
 {% block main %}<!---->
 
-<h1 class="mb-16">{{ page.title }}</h1>
+<h1 class="mb-16">{{ page?.title }}</h1>
 
-{% set section = get_section(path=page.extra.section) %}<!---->
+{% set section = get_section(path=page?.extra?.section) %}<!---->
+{% set_global current_year = "" %}<!---->
 
-{% for year, posts in section.pages | group_by(attribute="year") %}
-<h2>{{ year }} <sup class="opacity-60">{{ posts | length }}</sup></h2>
+{% for post in section?.pages %}
+{% set post_year = <jalali_date date={post.date} format="%Y" /> %}<!---->
+{% if post_year != current_year %}
+{% if current_year != "" %}
+  </ul>
+</div>
+{% endif %}<!---->
+{% set_global current_year = post_year %}<!---->
+{% set_global year_count = 0 %}<!---->
+{% for other in section?.pages %}<!---->
+{% set other_year = <jalali_date date={other.date} format="%Y" /> %}<!---->
+{% if other_year == post_year %}{% set_global year_count = year_count + 1 %}{% endif %}<!---->
+{% endfor %}
+<h2>{{ post_year }} <sup class="opacity-60">{{ year_count }}</sup></h2>
 
 <div class="not-prose pl-6">
   <ul>
-    {% for post in posts %}
+{% endif %}<!---->
     <li>
       <div class="my-2 flex items-center justify-between">
         <a class="secondary-link" href="{{ post.permalink }}">{{ post.title }}</a>
-        <time class="font-mono text-sm opacity-60">{{ post.date | date(format="%m-%d") }}</time>
+        <time class="font-mono text-sm opacity-60">{{ <jalali_date date={post.date} format="%d %B" /> }}</time>
       </div>
     </li>
-    {% endfor %}
+{% if loop.last %}
   </ul>
 </div>
-
+{% endif %}<!---->
 {% endfor %}<!---->
 {% endblock main %}

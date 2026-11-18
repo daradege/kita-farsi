@@ -1,5 +1,5 @@
 <header
-  class="{% if config.extra.style.header_blur %}blur-header{% else %}header{% endif %} fixed top-0 z-40 mx-auto min-h-14 w-full"
+  class="{% if config.extra?.style?.header_blur %}blur-header{% else %}header{% endif %} fixed top-0 z-40 mx-auto min-h-14 w-full"
 >
   <div class="mx-auto w-full max-w-4xl p-3 lg:flex lg:justify-between">
     <div class="flex justify-between">
@@ -11,7 +11,7 @@
           aria-label="Dark"
         ></div>
       </div>
-      {% if config.extra.menu %}
+      {% if config.extra?.menu %}
       <div
         class="btn-menu relative z-50 flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
         role="button"
@@ -65,12 +65,12 @@
         setDark(localStorage.getItem("dark") !== "true");
       });
     </script>
-    {% if config.extra.menu %}
+    {% if config.extra?.menu %}
     <nav class="flex w-full items-center lg:w-auto">
       <ul
         class="nav-wrapper flex w-full flex-col py-2 lg:w-auto lg:flex-row lg:self-center lg:py-0"
       >
-        {% for menu in config.extra.menu %}
+        {% for menu in config.extra?.menu %}
         <li>
           <a
             class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
@@ -81,7 +81,7 @@
         {% endfor %}
       </ul>
       <!-- Header Nav inject -->
-      {% include "injects/header_nav.html" ignore missing %}
+      {% include "injects/header_nav.html" %}
     </nav>
     {% endif %}
   </div>

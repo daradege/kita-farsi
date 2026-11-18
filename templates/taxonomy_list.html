@@ -1,4 +1,4 @@
-{% extends "index.html" %}<!---->
+{% extends "index.html" %}
 {% block main %}
 <!-- Taxonomy Title -->
 <h1 class="mb-16">{{ taxonomy.name | title }}</h1>
@@ -11,8 +11,8 @@
       <sup class="opacity-60">{{ term.page_count }}</sup>
     </h3>
 
-    {%for page in term.pages | slice(end=5) %}
-    <a class="secondary-link my-0.5" href="{{ page.permalink }}">{{ page.title }}</a>
+    {%for page in term.pages[:5] %}
+    <a class="secondary-link my-0.5" href="{{ page?.permalink }}">{{ page?.title }}</a>
     {% endfor %}<!---->
 
     {% if term.pages | length > 5 %}
