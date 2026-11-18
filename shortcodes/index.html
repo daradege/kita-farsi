@@ -32,7 +32,7 @@
   <meta property="og:title" content="کدهای کوتاه" />
   <meta property="og:site_name" content="کیتا فارسی" />
   <meta property="og:description" content="کدهای کوتاه پوسته Kita." />
-  <meta property="og:url" content="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;shortcodes&#x2F;" />
+  <meta property="og:url" content="https://kita-farsi.vercel.app/shortcodes/" />
   
   <!---->
   
@@ -123,7 +123,7 @@
   
 
   <!-- Canonical -->
-  <link rel="canonical" href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;shortcodes&#x2F;" />
+  <link rel="canonical" href="https://kita-farsi.vercel.app/shortcodes/" />
 
   <!-- Head inject -->
   
@@ -296,7 +296,7 @@
     <h1 class="my-0! pb-2.5">کدهای کوتاه</h1>
     <div class="text-sm antialiased opacity-60">
   
-  <time>۲۰۲۲-۱۰-۲۰</time>
+  <time>۲۸ مهر ۱۴۰۱</time>
   <span class="mx-1">&middot;</span>
   <span>۲ دقیقه</span>
   <!---->
@@ -355,14 +355,14 @@
 <p>تا به حال درباره کدهای کوتاه نشنیده‌اید؟ برای اطلاعات بیشتر <a rel="external" href="https://www.getzola.org/documentation/content/shortcodes/">مستندات Zola</a> را ببینید.</p>
 <h2 id="mermaid"><a class="zola-anchor" href="#mermaid" aria-label="Anchor link for: mermaid">Mermaid</a></h2>
 <p>برای استفاده از Mermaid در صفحه خود، باید <code>extra.mermaid = true</code> را در frontmatter صفحه تنظیم کنید.</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>+++</span></span>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>+++</span></span>
 <span class="giallo-l"><span>title = &quot;عنوان صفحه شما&quot;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>[</span><span class="z-string">extra</span><span>]</span></span>
+<span class="giallo-l"><span>[</span><span class="z-l-12 z-d-13">extra</span><span>]</span></span>
 <span class="giallo-l"><span>mermaid = true</span></span>
 <span class="giallo-l"><span>+++</span></span></code></pre>
 <p>سپس می‌توانید از کد کوتاه <code>mermaid()</code> استفاده کنید:</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% mermaid() %}</span></span>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">mermaid</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>graph TD;</span></span>
 <span class="giallo-l"><span>A--&gt;B;</span></span>
@@ -370,18 +370,18 @@
 <span class="giallo-l"><span>B--&gt;D;</span></span>
 <span class="giallo-l"><span>C--&gt;D;</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>{% end %}</span></span></code></pre>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">mermaid</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span></code></pre>
 <p>این به صورت زیر نمایش داده می‌شود:</p>
 <pre class="mermaid bg-inherit">
-  graph TD;
-A--&gt;B;
-A--&gt;C;
-B--&gt;D;
-C--&gt;D;
+graph TD;
+A-->B;
+A-->C;
+B-->D;
+C-->D;
 </pre>
 <p>علاوه بر این، می‌توانید بلوک کد را داخل کد کوتاه <code>mermaid()</code> استفاده کنید و بلوک کد نادیده گرفته می‌شود.</p>
 <p>بلوک کد از شکستن قالب‌بندی mermaid توسط فرمت‌کننده جلوگیری می‌کند.</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% mermaid() %}</span></span>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">mermaid</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
 <span class="giallo-l"></span>
 <span class="giallo-l"><span>```</span><span>mermaid</span></span>
 <span class="giallo-l"><span>sequenceDiagram</span></span>
@@ -397,184 +397,79 @@ C--&gt;D;
 <span class="giallo-l"><span>    Bob--&gt;&gt;John: Jolly good!</span></span>
 <span class="giallo-l"><span>```</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>{% end %}</span></span></code></pre>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">mermaid</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span></code></pre>
 <p>این به صورت زیر نمایش داده می‌شود:</p>
 <pre class="mermaid bg-inherit">
-  
+
 sequenceDiagram
     participant Alice
     participant Bob
-    Alice-&gt;&gt;John: Hello John, how are you?
+    Alice->>John: Hello John, how are you?
     loop Healthcheck
-        John-&gt;&gt;John: Fight against hypochondria
+        John->>John: Fight against hypochondria
     end
-    Note right of John: Rational thoughts &lt;br&#x2F;&gt;prevail!
-    John--&gt;&gt;Alice: Great!
-    John-&gt;&gt;Bob: How about you?
-    Bob--&gt;&gt;John: Jolly good!
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
 
 </pre>
 <h2 id="hshdr"><a class="zola-anchor" href="#hshdr" aria-label="Anchor link for: hshdr">هشدار</a></h2>
 <p>کد کوتاه <code>admonition()</code> یک بنر نمایش می‌دهد تا به شما کمک کند توجه را در صفحه خود قرار دهید.</p>
 <p>این روش دیگری برای نوشتن هشدار به سبک GitHub است، اما از عناوین سفارشی پشتیبانی می‌کند.</p>
 <p>می‌توانید از کد کوتاه <code>admonition()</code> به صورت زیر استفاده کنید:</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% admonition(type=&quot;note&quot;, title=&quot;نکته&quot;) %}</span></span>
-<span class="giallo-l"><span>هشدار </span><span class="z-markup z-inline z-raw">`</span><span class="z-markup z-inline z-raw">note</span><span class="z-markup z-inline z-raw">`</span><span>.</span></span>
-<span class="giallo-l"><span>{% end %}</span></span></code></pre> <!---->
-
-
-<blockquote
-  class="markdown-alert-note"
-  style="--admonition-title: 'یادداشت'"
->
-  <p>هشدار <code>note</code>.</p>
-
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">admonition</span><span class="z-l-16 z-d-9"> type</span><span>=</span><span class="z-l-2 z-d-13">&quot;</span><span class="z-l-2 z-d-13">note</span><span class="z-l-2 z-d-13">&quot;</span><span class="z-l-16 z-d-9"> title</span><span>=</span><span class="z-l-2 z-d-13">&quot;</span><span class="z-l-2 z-d-13">نکته</span><span class="z-l-2 z-d-13">&quot;</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
+<span class="giallo-l"><span>هشدار </span><span class="z-l-10 z-d-13">`</span><span class="z-l-10 z-d-13">note</span><span class="z-l-10 z-d-13">`</span><span>.</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">admonition</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span></code></pre><blockquote class="markdown-alert-note" style="--admonition-title: 'یادداشت'">
+<p>هشدار <code>note</code>.</p>
 </blockquote>
- <!---->
-
-
-<blockquote
-  class="markdown-alert-tip"
-  style="--admonition-title: 'نکته'"
->
-  <p>هشدار <code>tip</code>.</p>
-
+<blockquote class="markdown-alert-tip" style="--admonition-title: 'نکته'">
+<p>هشدار <code>tip</code>.</p>
 </blockquote>
- <!---->
-
-
-<blockquote
-  class="markdown-alert-important"
-  style="--admonition-title: 'مهم'"
->
-  <p>هشدار <code>important</code>.</p>
-
+<blockquote class="markdown-alert-important" style="--admonition-title: 'مهم'">
+<p>هشدار <code>important</code>.</p>
 </blockquote>
- <!---->
-
-
-<blockquote
-  class="markdown-alert-warning"
-  style="--admonition-title: 'هشدار'"
->
-  <p>هشدار <code>warning</code>.</p>
-
+<blockquote class="markdown-alert-warning" style="--admonition-title: 'هشدار'">
+<p>هشدار <code>warning</code>.</p>
 </blockquote>
- <!---->
-
-
-<blockquote
-  class="markdown-alert-caution"
-  style="--admonition-title: 'احتیاط'"
->
-  <p>هشدار <code>caution</code>.</p>
-
+<blockquote class="markdown-alert-caution" style="--admonition-title: 'احتیاط'">
+<p>هشدار <code>caution</code>.</p>
 </blockquote>
 <h2 id="glry"><a class="zola-anchor" href="#glry" aria-label="Anchor link for: glry">گالری</a></h2>
 <p>کد کوتاه <code>gallery()</code> یک گالری تصویر قابل کلیک ساده فقط HTML است که تمام تصاویر را از دارایی‌های صفحه نمایش می‌دهد.</p>
 <p>این از <a rel="external" href="https://www.getzola.org/documentation/content/image-processing/">مستندات Zola</a> گرفته شده است</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{{ gallery() }}</span></span></code></pre><div class="not-prose flex flex-wrap gap-2">
-  <!---->
-  <!---->
-  <!---->
-  
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>{{ </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">gallery</span><span class="z-l-10 z-d-8"> /&gt;</span><span> }}</span></span></code></pre><div class="not-prose flex flex-wrap gap-2">
   <a href="https://kita-farsi.vercel.app/shortcodes/01-zola.png" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;01-zola.b673627618ae4d9e.png" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/01-zola.b673627618ae4d9e.png" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/02-zola-manet.png" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;02-zola-manet.6cacdaa0a00675f4.png" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/02-zola-manet.6cacdaa0a00675f4.png" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/03-zola-cezanne.png" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;03-zola-cezanne.7278afdd982f9c0d.png" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/03-zola-cezanne.7278afdd982f9c0d.png" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/04-gutenberg.jpg" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;04-gutenberg.870b88ab978bdf22.jpg" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/04-gutenberg.870b88ab978bdf22.jpg" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/05-example.jpg" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;05-example.fa7cb105347c93cf.jpg" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/05-example.fa7cb105347c93cf.jpg" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/06-example.jpg" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;06-example.eb57cde378878205.jpg" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/06-example.eb57cde378878205.jpg" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/07-example.jpg" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;07-example.6ba4bc34b155528f.jpg" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/07-example.6ba4bc34b155528f.jpg" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  
   <a href="https://kita-farsi.vercel.app/shortcodes/08-example.jpg" target="_blank">
-    <img class="rounded-lg" src="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;processed_images&#x2F;08-example.13c3f7440797b6ed.jpg" />
+    <img class="rounded-lg" src="https://kita-farsi.vercel.app/processed_images/08-example.13c3f7440797b6ed.jpg" />
   </a>
-  <!---->
-  <!---->
-  <!---->
-  
 </div>
 <h2 id="svg-drwnkhty"><a class="zola-anchor" href="#svg-drwnkhty" aria-label="Anchor link for: svg-drwnkhty">SVG درون‌خطی</a></h2>
 <p>کد کوتاه <code>inline_svg()</code> برای جاسازی تصاویر SVG مستقیماً در یک صفحه وب استفاده می‌شود، به جای شامل کردن آنها از طریق تگ <code>&lt;img&gt;</code>.</p>
 <p>می‌توانید از کدهای کوتاه <code>inline_svg()</code> به صورت زیر استفاده کنید:</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% inline_svg() %}</span></span>
-<span class="giallo-l"><span>![</span><span class="z-string">Van de Graaf canon</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
-<span class="giallo-l"><span>{% end %}</span></span></code></pre><!---->
-<!---->
-<!---->
-<!---->
-
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-
-<figure class="inline-svg">
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-l-12 z-d-13">Van de Graaf canon</span><span>]</span><span>(</span><span class=" z-l-u z-d-u">Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span></code></pre><figure class="inline-svg">
   <svg class="canon" xmlns="http://www.w3.org/2000/svg" overflow="visible" viewBox="0 0 496 373"
    height="373" width="496">
    <g fill="none">
@@ -586,54 +481,25 @@ sequenceDiagram
       <ellipse cx="498.729" cy="177.625" rx=".75" ry="1.25"></ellipse>
       <ellipse cx="247.229" cy="377.375" rx=".75" ry="1.25"></ellipse>
    </g>
-</svg><!---->
-  
+</svg>
   <figcaption>Van de Graaf canon</figcaption>
-  
 </figure>
 <p>اگر نمی‌خواهید زیرنویس زیر تصویر نمایش داده شود، می‌توانید متن <code>alt</code> تصویر Markdown را به رشته خالی، <code>Inline SVG</code>، <code>inline-svg</code> یا <code>inline_svg</code> تنظیم کنید.</p>
-<pre class="giallo z-code"><code data-lang="markdown"><span class="giallo-l"><span>{% inline_svg() %}</span></span>
-<span class="giallo-l"><span>![</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
-<span class="giallo-l"><span>{% end %}</span></span>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="markdown"><span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
+<span class="giallo-l"><span>![</span><span>]</span><span>(</span><span class=" z-l-u z-d-u">Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>{% inline_svg() %}</span></span>
-<span class="giallo-l"><span>![</span><span class="z-string">Inline SVG</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
-<span class="giallo-l"><span>{% end %}</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-l-12 z-d-13">Inline SVG</span><span>]</span><span>(</span><span class=" z-l-u z-d-u">Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>{% inline_svg() %}</span></span>
-<span class="giallo-l"><span>![</span><span class="z-string">inline-svg</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
-<span class="giallo-l"><span>{% end %}</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-l-12 z-d-13">inline-svg</span><span>]</span><span>(</span><span class=" z-l-u z-d-u">Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
 <span class="giallo-l"></span>
-<span class="giallo-l"><span>{% inline_svg() %}</span></span>
-<span class="giallo-l"><span>![</span><span class="z-string">inline_svg</span><span>]</span><span>(</span><span>Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
-<span class="giallo-l"><span>{% end %}</span></span></code></pre><!---->
-<!---->
-<!---->
-<!---->
-
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-
-<figure class="inline-svg">
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span>
+<span class="giallo-l"><span>![</span><span class="z-l-12 z-d-13">inline_svg</span><span>]</span><span>(</span><span class=" z-l-u z-d-u">Van_de_Graaf_canon_in_book_design.svg</span><span>)</span></span>
+<span class="giallo-l"><span>{% </span><span class="z-l-10 z-d-8">&lt;/</span><span class="z-l-10 z-d-4">inline_svg</span><span class="z-l-10 z-d-8">&gt;</span><span> %}</span></span></code></pre><figure class="inline-svg">
   <svg class="canon" xmlns="http://www.w3.org/2000/svg" overflow="visible" viewBox="0 0 496 373"
    height="373" width="496">
    <g fill="none">
@@ -645,8 +511,7 @@ sequenceDiagram
       <ellipse cx="498.729" cy="177.625" rx=".75" ry="1.25"></ellipse>
       <ellipse cx="247.229" cy="377.375" rx=".75" ry="1.25"></ellipse>
    </g>
-</svg><!---->
-  
+</svg>
 </figure>
 </section>
 
@@ -693,15 +558,15 @@ sequenceDiagram
   
   <a
     class="block-hover-mask mr-auto flex min-w-[50%] grow items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline"
-    href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;math-typesetting&#x2F;"
-    ><span class="ml-1.5">←</span><span>قالب‌بندی ریاضی</span></a
+    href="https://kita-farsi.vercel.app/theme-config/"
+    ><span class="ml-1.5">←</span><span>راهنمای پیکربندی پوسته</span></a
   >
   
   
   <a
     class="block-hover-mask flex min-w-[50%] grow items-center rounded-l-md p-6 pr-3 font-semibold no-underline"
-    href="https:&#x2F;&#x2F;kita-farsi.vercel.app&#x2F;theme-config&#x2F;"
-    ><span>راهنمای پیکربندی پوسته</span><span class="mr-1.5">→</span></a
+    href="https://kita-farsi.vercel.app/math-typesetting/"
+    ><span>قالب‌بندی ریاضی</span><span class="mr-1.5">→</span></a
   >
   <!---->
 </nav>
@@ -719,7 +584,7 @@ sequenceDiagram
     </div>
 
     <footer class="mx-auto flex max-w-3xl flex-wrap items-center px-8 py-4 text-sm opacity-60">
-  <div class="mr-auto basis-full lg:basis-1/2">
+  <div class="mr-auto basis-full text-center lg:basis-1/2 lg:text-right">
     <!---->
     <!---->
     &copy; 2020 - 2026<!---->
@@ -729,13 +594,13 @@ sequenceDiagram
     </a>
      |<!---->
     <!---->
-    <a class="link" href="https:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-sa&#x2F;4.0&#x2F;deed" rel="noopener" target="_blank">
+    <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/deed" rel="noopener" target="_blank">
       CC BY-SA 4.0
     </a>
     <!---->
     
   </div>
-  <div class="flex basis-full lg:basis-1/2 lg:justify-end">
+  <div class="flex basis-full justify-center lg:basis-1/2 lg:justify-end">
     <a class="link mr-6 lg:ml-6" href="https://www.getzola.org/" rel="noopener" target="_blank">
       قدرت‌گرفته از zola
     </a>
