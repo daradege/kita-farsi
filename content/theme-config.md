@@ -1,6 +1,6 @@
 +++
 title = "راهنمای پیکربندی پوسته"
-date = "1401-07-28"
+date = "2026-11-18"
 description = "پیکربندی پوسته Kita."
 [taxonomies]
 tags = ["پوسته", "markdown"]

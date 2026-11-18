@@ -1,6 +1,6 @@
 +++
 title = "قالب‌بندی ریاضی"
-date = "1401-07-28"
+date = "2026-11-18"
 description = "راهنمای مختصر برای راه‌اندازی KaTeX"
 extra.math = true
 +++

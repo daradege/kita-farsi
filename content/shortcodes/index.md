@@ -1,6 +1,6 @@
 +++
 title = "کدهای کوتاه"
-date = "1401-07-28"
+date = "2026-11-18"
 description = "کدهای کوتاه پوسته Kita."
 [taxonomies]
 tags = ["markdown", "css", "html"]

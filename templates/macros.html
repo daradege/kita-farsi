@@ -14,27 +14,27 @@
 {%- set jy = 979 -%}
 {%- if gm > 2 -%}{%- set gy2 = gy + 1 -%}{%- else -%}{%- set gy2 = gy -%}{%- endif -%}
 {%- set gi = gm - 1 -%}
-{%- set t1 = ((gy2 + 3) / 4) | int -%}
-{%- set t2 = ((gy2 + 99) / 100) | int -%}
-{%- set t3 = ((gy2 + 399) / 400) | int -%}
+{%- set t1 = ((gy2 + 3) / 4) | str | split(pat=".") | first | int -%}
+{%- set t2 = ((gy2 + 99) / 100) | str | split(pat=".") | first | int -%}
+{%- set t3 = ((gy2 + 399) / 400) | str | split(pat=".") | first | int -%}
 {%- set days = 365 * gy + t1 - t2 + t3 - 80 + gd + g_d_m[gi] -%}
-{%- set q = (days / 12053) | int -%}
+{%- set q = (days / 12053) | str | split(pat=".") | first | int -%}
 {%- set jy = jy + 33 * q -%}
 {%- set days = days % 12053 -%}
-{%- set q = (days / 1461) | int -%}
+{%- set q = (days / 1461) | str | split(pat=".") | first | int -%}
 {%- set jy = jy + 4 * q -%}
 {%- set days = days % 1461 -%}
 {%- if days > 365 -%}
-{%- set q = ((days - 1) / 365) | int -%}
+{%- set q = ((days - 1) / 365) | str | split(pat=".") | first | int -%}
 {%- set jy = jy + q -%}
 {%- set days = (days - 1) % 365 -%}
 {%- endif -%}
 {%- if days < 186 -%}
-{%- set q = (days / 31) | int -%}
+{%- set q = (days / 31) | str | split(pat=".") | first | int -%}
 {%- set jm = 1 + q -%}
 {%- set jd = 1 + (days % 31) -%}
 {%- else -%}
-{%- set q = ((days - 186) / 30) | int -%}
+{%- set q = ((days - 186) / 30) | str | split(pat=".") | first | int -%}
 {%- set jm = 7 + q -%}
 {%- set jd = 1 + ((days - 186) % 30) -%}
 {%- endif -%}
